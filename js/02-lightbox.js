@@ -1,9 +1,11 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 const galleryEl = document.querySelector(".gallery");
+const makeListImgs = renderListGallery(galleryItems);
+galleryEl.insertAdjacentHTML("beforeend", makeListImgs);
 
-const renderListGallery = (makeImageItems) =>
-  makeImageItems.reduce(
+function renderListGallery(makeImageItems) {
+  return makeImageItems.reduce(
     (acc, { preview, original, description }) =>
       acc +
       `<a class="gallery__item" href="${original}">
@@ -11,19 +13,10 @@ const renderListGallery = (makeImageItems) =>
       </a>`,
     ""
   );
-
-galleryEl.insertAdjacentHTML("afterbegin", renderListGallery(galleryItems));
-galleryEl.addEventListener("click", onAllGalleryClick);
-
-function onAllGalleryClick(e) {
-  e.preventDefault();
-  if (!e.target.classList.contains("gallery__image")) {
-    return;
-  }
-  new SimpleLightbox(".gallery a", {
-    captionSelector: "img",
-    captionsData: "alt",
-    captionPosition: "bottom",
-    captionDelay: 250,
-  });
 }
+new SimpleLightbox(".gallery a", {
+  captionSelector: "img",
+  captionsData: "alt",
+  captionPosition: "bottom",
+  captionDelay: 25,
+});
