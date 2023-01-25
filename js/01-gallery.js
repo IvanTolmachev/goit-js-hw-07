@@ -3,7 +3,6 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const galleryEl = document.querySelector(".gallery");
-const galleryNew = document.querySelector(".basicLightbox");
 
 /* создание елемента галереи*/
 
@@ -50,8 +49,8 @@ function onAllGalleryClick(e) {
       window.removeEventListener("keydown", onEscKeyClick);
     },
   });
-
   instance.show();
+
   function onEscKeyClick(e) {
     const ESC_KEY_CODE = "Escape";
     const isEscKey = e.code === ESC_KEY_CODE;
